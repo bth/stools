@@ -6,13 +6,22 @@
 Welcome to stools's documentation!
 ==================================
 
+What
+----
+
+"stools" is a module for Python 2.6+ that help you to automate tasks on machines across network.
+
+
+Documentation
+-------------
+
 .. toctree::
    conception
 
    autodoc
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
