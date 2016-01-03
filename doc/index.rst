@@ -53,6 +53,26 @@ On `my-pc` you can execute this task by using::
 
     $ stools -e build
 
+Installing
+------------
+
+`stools` requires `Paramiko <http://www.paramiko.org>`_.
+
+The recommended way to get `stools` is to download `archive file 
+<https://github.com/bth/stools/blob/master/versions/stools-0.1.tar.gz?raw=true>`_ 
+and install with `pip`::
+
+    $ pip install stools-<version>.tar.gz
+
+An alternative way is to extract archive::
+
+    $ tar xvvf stools-<version>.tar.gz
+
+Then, execute this command::
+
+    $ cd stools-<version>
+    $ python setup.py install
+
 Documentation
 -------------
 
