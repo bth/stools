@@ -4,8 +4,7 @@ stools
 
 :Description: Tools for automate tasks on machines with only ssh
 :License:     GPL
-:Homepage:    TODO
-:API docs:    TODO
+:Homepage:    http://entrecode.fr/stools/
 :Development: https://github.com/bth/stools
 
 
