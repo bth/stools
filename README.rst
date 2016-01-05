@@ -24,8 +24,8 @@ Requirements
 - `Paramiko <http://www.paramiko.org/>`_ 1.15+
 
 
-Installation
-------------
+Installing
+----------
 
 The recommended way to get `stools` is to download `archive file 
 <https://github.com/bth/stools/blob/master/versions/stools-0.1.tar.gz?raw=true>`_ 
