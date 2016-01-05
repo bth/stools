@@ -47,6 +47,22 @@ On `my-pc` you can execute this task by using::
 
     $ stools -e build
 
+Use
+---
+
+For list all configured tasks, you can do::
+
+    $ stools
+
+By default, `stools` search config file as `~/.stools/configuration.cfg` but 
+you can specify where is your configuration file by using::
+
+    $ stools -c /my_path/my_configuration.cfg
+
+You can execute a task `my_task` by using::
+
+    $ stools -e my_task
+
 Documentation
 -------------
 
