@@ -3,8 +3,10 @@
 """
     Module for configuration file management
 """
-
-from configobj import ConfigObj
+import os
+import sys
+from configobj import ConfigObj, flatten_errors
+from validate import Validator
 from stools.Machine import Machine
 from stools.Task import Task
 from stools.Command import Command
@@ -15,6 +17,28 @@ class Configuration(object):
     """
         Class for configuration file management
     """
+    @classmethod
+    def get_configuration_from_file(cls, configuration_file):
+        """
+            Return a ConfigObj instance if configuration_file is validate
+
+            :param configuration_file: filename of configuration file
+            :return: ConfigObj instance
+            :rtype: ConfigObj
+        """
+        configspec_file = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'configuration.configspec')
+        configuration = ConfigObj(configuration_file, configspec=configspec_file)
+        validator = Validator()
+        results = configuration.validate(validator, preserve_errors=True)
+        if results != True:
+            for (section_list, key, _) in flatten_errors(configuration, results):
+                if key is not None: 
+                    print 'The "%s" key in the section "%s" failed validation' % (key, ', '.join(section_list))
+                else:
+                    print 'The following section was missing:%s ' % ', '.join(section_list)
+            sys.exit(2)
+
+        return configuration
 
     @classmethod
     def get_tasks_list(cls, configuration_file):
@@ -25,7 +49,7 @@ class Configuration(object):
             :return: Dictionary of tasks
             :rtype: dictionary
         """
-        configuration = ConfigObj(configuration_file)
+        configuration = cls.get_configuration_from_file(configuration_file)
         tasks_dictionary = {}
         for category, configuration in configuration.iteritems():
             if category == "tasks":
@@ -44,7 +68,7 @@ class Configuration(object):
             :return: Task instance of task_name_to_search
             :rtype: Task
         """
-        configuration = ConfigObj(configuration_file)
+        configuration = cls.get_configuration_from_file(configuration_file)
         machines_dictionary = cls.get_machines(configuration_file)
         for category, configuration in configuration.iteritems():
             if category == "tasks":
