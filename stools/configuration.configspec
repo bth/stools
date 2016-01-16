@@ -1,0 +1,14 @@
+[machines]
+
+    [[__many__]]
+
+    ip = string()
+    username = string()
+    password = string()
+
+[tasks]
+
+    [[__many__]]
+    
+        [[[__many__]]]
+        type = option(copy, recovery, command, default="command")
