@@ -42,6 +42,17 @@ Then, execute this command::
     $ cd stools-<version>
     $ python setup.py install
 
+Build
+-----
+
+You can build stools distribution with::
+
+   $ python setup.py sdist
+
+You can build documentation with::
+
+   $ cd doc ; make html
+
 Bugs & Support
 --------------
 
