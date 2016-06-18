@@ -15,7 +15,7 @@ from stools.Configuration import Configuration
 
 def parse_args():
     parser = ArgumentParser()
-    parser.add_argument('-v', '--version', action='version', version='0.1')
+    parser.add_argument('-v', '--version', action='version', version='0.2')
     parser.add_argument('-c', '--configuration', default=expanduser("~") + '/.stools/configuration.cfg')
     parser.add_argument('-e', '--execute', nargs='*')
     parser.add_argument('-l', '--log', default='ERROR')

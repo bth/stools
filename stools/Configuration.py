@@ -26,7 +26,7 @@ class Configuration(object):
             :return: ConfigObj instance
             :rtype: ConfigObj
         """
-        configspec_file = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'configuration.configspec')
+        configspec_file = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'spec', 'configuration.configspec')
         configuration = ConfigObj(configuration_file, configspec=configspec_file)
         validator = Validator()
         results = configuration.validate(validator, preserve_errors=True)
