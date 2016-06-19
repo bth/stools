@@ -8,7 +8,7 @@ setup(
     author='bth',
     author_email='contactbth@gmail.com',
     packages=find_packages(),
-    package_data={'stools': ['spec/*.configspec']},
+    package_data={'stools': ['spec/*.configspec', 'example/*.cfg']},
     entry_points = {
         'console_scripts': [
             'stools = stools.main:main',
