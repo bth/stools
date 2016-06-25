@@ -6,7 +6,6 @@
 
 import paramiko
 import re, string
-from stools.Colors import Colors
 
 class Machine(object):
     """
@@ -97,7 +96,7 @@ class Machine(object):
             client, terminal = self.create_connection_by_terminal()
             ret = self.write_on_terminal(terminal, command, self.prompt)
             ret = self.clean_output(ret)
-        return Colors.enable_color("blue") + ret + Colors.disable_color()
+        return ret
 
     def execute_copy(self, command, machine_target):
         """
@@ -115,7 +114,7 @@ class Machine(object):
             client, terminal = self.create_connection_by_terminal()
         self.write_on_terminal(terminal, command, "password: ")
         ret = self.write_on_terminal(terminal, machine_target.password, self.prompt)
-        return Colors.enable_color("blue") + self.clean_output(ret) + Colors.disable_color()
+        return self.clean_output(ret)
 
     def clean_output(self, output):
         """

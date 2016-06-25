@@ -6,12 +6,6 @@ Main
 .. automodule:: stools.main
    :members:
 
-Colors
-------
-
-.. automodule:: stools.Colors
-   :members:
-
 Command
 -------
 

@@ -4,8 +4,6 @@
     Module for command management
 """
 
-from stools.Colors import Colors
-
 class Command(object):
     """
        Representation of a command
@@ -34,6 +32,6 @@ class Command(object):
         """
         prompt = "[" + self.machine.username + "@" + self.machine.ip + "]"
         command_line = self.command_line
-        print Colors.enable_color("red") + prompt + " " + command_line + Colors.disable_color()
+        print prompt + " " + command_line
         return self.machine.execute_command(self.command_line)
 

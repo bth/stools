@@ -4,7 +4,6 @@
     Module for copy command
 """
 
-from stools.Colors import Colors
 from stools.Command import Command
 
 class Copy(Command):
@@ -47,11 +46,9 @@ class Copy(Command):
                      + self.machine_source.ip \
                      + "]"
         command = self.command_line
-        print Colors.enable_color("red") \
-              + prompt \
+        print prompt \
               + " " \
-              + command \
-              + Colors.disable_color()
+              + command
         return self.machine_source.execute_copy(command, \
                                                   self.machine_target)
 
