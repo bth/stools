@@ -10,8 +10,8 @@ from validate import Validator
 from stools.Machine import Machine
 from stools.Task import Task
 from stools.Command import Command
-from stools.Copy import Copy
-from stools.Recovery import Recovery
+from stools.Put import Put
+from stools.Get import Get
 
 class Configuration(object):
     """
@@ -80,14 +80,14 @@ class Configuration(object):
                             cls.replace_generic_commands(command_parameters, \
                                                          arguments_list, \
                                                          argument_id)
-                            if command_parameters.get("type") == "copy":
-                                command = Copy(task_name, \
+                            if command_parameters.get("type") == "put":
+                                command = Put(task_name, \
                                                machines_dictionary.get(command_parameters.get("machine_source")), \
                                                machines_dictionary.get(command_parameters.get("machine_target")), \
                                                command_parameters.get("file_source"), \
                                                command_parameters.get("file_target"))
-                            elif command_parameters.get("type") == "recovery":
-                                                       command = Recovery(task_name, \
+                            elif command_parameters.get("type") == "get":
+                                                       command = Get(task_name, \
                                                        machines_dictionary.get(command_parameters.get("machine_source")), \
                                                        machines_dictionary.get(command_parameters.get("machine_target")), \
                                                        command_parameters.get("file_source"), \

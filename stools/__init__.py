@@ -18,10 +18,10 @@ Configuration
 .. automodule:: stools.Configuration
    :members:
 
-Copy
+Put
 ----
 
-.. automodule:: stools.Copy
+.. automodule:: stools.Put
    :members:
 
 Machine
@@ -30,10 +30,10 @@ Machine
 .. automodule:: stools.Machine
    :members:
 
-Recovery
+Get
 --------
 
-.. automodule:: stools.Recovery
+.. automodule:: stools.Get
    :members:
 
 Task
