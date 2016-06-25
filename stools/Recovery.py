@@ -4,7 +4,6 @@
     Module for recovery command
 """
 
-from stools.Colors import Colors
 from stools.Command import Command
 
 class Recovery(Command):
@@ -40,6 +39,6 @@ class Recovery(Command):
         """
         prompt = "[" + self.machine_target.username + "@" + self.machine_target.ip + "]"
         command = self.command_line
-        print Colors.enable_color("red") + prompt + " " + command + Colors.disable_color()
+        print prompt + " " + command
         return self.machine_target.execute_copy(command, self.machine_source)
 
