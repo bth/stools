@@ -8,8 +8,8 @@ Conception
    Configuration "1" *-- "*" Machine
    Task "1" *-- "*" Command
    Command "1" -- "1" Machine
-   Command <|-- Copy
-   Command <|-- Recovery
+   Command <|-- Put
+   Command <|-- Get
 
    class Configuration {
      +get_tasks_list()
@@ -29,7 +29,7 @@ Conception
      +execute()
    }
 
-   class Copy {
+   class Put {
      -name
      -machine_source
      -machine_target
@@ -38,7 +38,7 @@ Conception
      +execute()
    }
 
-   class Recovery {
+   class Get {
      -name
      -machine_source
      -machine_target

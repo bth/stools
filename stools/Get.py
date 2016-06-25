@@ -1,27 +1,27 @@
 # -*- coding: utf-8 -*-
 
 """
-    Module for recovery command
+    Module for get command
 """
 
 from stools.Command import Command
 
-class Recovery(Command):
+class Get(Command):
     """
-        Representation of a recovery command
+        Representation of a get command
     """
 
     def __init__(self, name, machine_source, machine_target, file_source, file_target):
         """
-            Create a new Recovery object
+            Create a new Get object
 
             :param name: command name
             :param machine_source: object Machine where file_source is
             :param machine_target: object Machine where to put file
             :param file_source: name (or path) where file to copy is
             :param file_target: name (or path) where copy file
-            :return: Recovery instance
-            :rtype: Recovery
+            :return: Get instance
+            :rtype: Get
         """
         self.name = name
         self.machine_source = machine_source

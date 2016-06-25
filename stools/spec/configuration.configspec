@@ -11,4 +11,4 @@
     [[__many__]]
     
         [[[__many__]]]
-        type = option(copy, recovery, command, default="command")
+        type = option(put, get, command, default="command")

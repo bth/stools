@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
 
 """
-    Module for copy command
+    Module for put command
 """
 
 from stools.Command import Command
 
-class Copy(Command):
+class Put(Command):
     """
-        Representation of a copy command
+        Representation of a put command
     """
 
     def __init__(self, name, machine_source, machine_target, \
                  file_source, file_target):
         """
-            Create a new Copy object
+            Create a new Put object
 
             :param name: command name
             :param machine_source: object Machine where file_source is
             :param machine_target: object Machine where to put file
-            :param file_source: name (or path) where file to copy is
-            :param file_target: name (or path) where copy file
-            :return: Copy instance
-            :rtype: Copy
+            :param file_source: name (or path) where file to put is
+            :param file_target: name (or path) where put file
+            :return: Put instance
+            :rtype: Put
         """
         self.name = name
         self.machine_source = machine_source
