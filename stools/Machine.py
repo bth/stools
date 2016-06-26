@@ -51,19 +51,26 @@ class Machine(object):
         client.connect(self.ip, username=self.username, password=self.password)
         return client
 
-    def write_on_terminal(self, terminal, string_to_write, string_of_end):
+    def write_on_terminal(self, terminal, string_to_write, string_of_end, machine=None):
         """
             Write string_to_write on terminal and wait for string_of_end
 
             :param terminal: terminal instance
             :param string_to_write: string to write in terminal
             :param string_of_end: string of waiting
+            :param machine: machine instance for password
         """
+        if machine is None:
+          machine = self
         terminal.send(string_to_write + "\n")
         ret = ''
         while re.search(string_of_end, ret) == None:
             if re.search("Are you sure you want to continue connecting", ret):
                 terminal.send("yes" + "\n")
+                ret=''
+            elif re.search("password:", ret):
+                terminal.send(machine.password + "\n")
+                ret=''
             fragment = terminal.recv(9999)
             ret += fragment
         return ret
@@ -74,8 +81,7 @@ class Machine(object):
         """
         client = self.gateway.create_connection()
         terminal = client.invoke_shell()
-        self.write_on_terminal(terminal, "ssh " + self.username + "@" + self.ip, "password: ")
-        self.write_on_terminal(terminal, self.password, self.prompt)
+        self.write_on_terminal(terminal, "ssh " + self.username + "@" + self.ip, self.prompt)
         return client, terminal
 
     def execute_command(self, command):
@@ -112,8 +118,8 @@ class Machine(object):
             terminal = client.invoke_shell()
         else:
             client, terminal = self.create_connection_by_terminal()
-        self.write_on_terminal(terminal, command, "password: ")
-        ret = self.write_on_terminal(terminal, machine_target.password, self.prompt)
+        ret = self.write_on_terminal(terminal, "", self.prompt, machine_target)
+        ret = self.write_on_terminal(terminal, command, self.prompt, machine_target)
         return self.clean_output(ret)
 
     def clean_output(self, output):
