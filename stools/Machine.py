@@ -100,6 +100,7 @@ class Machine(object):
             ret = ret[:string.rfind(ret, '\n')]
         else:
             client, terminal = self.create_connection_by_terminal()
+            ret = self.write_on_terminal(terminal, "", self.prompt)
             ret = self.write_on_terminal(terminal, command, self.prompt)
             ret = self.clean_output(ret)
         return ret
