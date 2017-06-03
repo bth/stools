@@ -1,0 +1,2 @@
+include stools/spec/configuration.configspec
+include stools/example/configuration.cfg
