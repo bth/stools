@@ -37,7 +37,7 @@ An alternative way is to extract archive::
 
     $ tar xvvf stools-<version>.tar.gz
 
-Then, execute this command::
+Then, execute this commands::
 
     $ cd stools-<version>
     $ python setup.py install
