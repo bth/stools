@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='stools',
     version='0.2',
-    description='tools for automate tasks on machines with only ssh',
+    description='tools for automate tasks on machines with ssh only',
     url='https://github.com/bth/stools',
     author='bth',
     author_email='contactbth@gmail.com',
