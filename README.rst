@@ -2,7 +2,7 @@
 stools
 ======
 
-:Description: Tools for automate tasks on machines with only ssh
+:Description: Tools for automate tasks on machines with ssh only
 :License:     GPL
 :Homepage:    http://entrecode.fr/stools/
 :Development: https://github.com/bth/stools
