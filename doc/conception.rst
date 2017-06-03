@@ -19,6 +19,7 @@ Conception
 
    class Task {
      -name
+     +add_command()
      +execute()
    }
 
@@ -26,6 +27,7 @@ Conception
      -name
      -machine
      -command_line
+     -timeout
      +execute()
    }
 
@@ -52,8 +54,10 @@ Conception
      -ip
      -username
      -password
-     -gateway
+     -gateway_machine_name
+     -prompt
      +set_gateway()
      +execute_command()
+     +execute_copy()
    }
    @enduml

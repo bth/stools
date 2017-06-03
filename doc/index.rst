@@ -37,7 +37,7 @@ stools configuration file (:file:`~/.stools/configuration.cfg` on `my-pc`) like 
         command = "cd source_code_directory ; git pull ; make"
         
         [[[get_bin]]]
-        type = "recovery"
+        type = "get"
         machine_source = "build"
         machine_target = "my-pc"
         file_source = "source_code_directory/bin"
