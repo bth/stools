@@ -56,9 +56,4 @@ Conception
      +set_gateway()
      +execute_command()
    }
-
-   class Color {
-     +enable_color()
-     +disable_color()
-   }
    @enduml
