@@ -95,7 +95,8 @@ class Configuration(object):
                             else:
                                 command = Command(task_name, \
                                                    machines_dictionary.get(command_parameters.get("machine")), \
-                                                   command_parameters.get("command"))
+                                                   command_parameters.get("command"), \
+                                                   command_parameters.get("timeout"))
                             task.add_command(command)
                         return task
 

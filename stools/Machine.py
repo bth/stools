@@ -51,26 +51,19 @@ class Machine(object):
         client.connect(self.ip, username=self.username, password=self.password)
         return client
 
-    def write_on_terminal(self, terminal, string_to_write, string_of_end, machine=None):
+    def write_on_terminal(self, terminal, string_to_write, string_of_end):
         """
             Write string_to_write on terminal and wait for string_of_end
 
             :param terminal: terminal instance
             :param string_to_write: string to write in terminal
             :param string_of_end: string of waiting
-            :param machine: machine instance for password
         """
-        if machine is None:
-          machine = self
         terminal.send(string_to_write + "\n")
         ret = ''
         while re.search(string_of_end, ret) == None:
             if re.search("Are you sure you want to continue connecting", ret):
                 terminal.send("yes" + "\n")
-                ret=''
-            elif re.search("password:", ret):
-                terminal.send(machine.password + "\n")
-                ret=''
             fragment = terminal.recv(9999)
             ret += fragment
         return ret
@@ -81,26 +74,27 @@ class Machine(object):
         """
         client = self.gateway.create_connection()
         terminal = client.invoke_shell()
-        self.write_on_terminal(terminal, "ssh " + self.username + "@" + self.ip, self.prompt)
+        self.write_on_terminal(terminal, "ssh " + self.username + "@" + self.ip, "password: ")
+        self.write_on_terminal(terminal, self.password, self.prompt)
         return client, terminal
 
-    def execute_command(self, command):
+    def execute_command(self, command, timeout):
         """
             Execute command on this machine
 
             :param command: command to execute
+            :param timeout: timeout (in seconds) for command execution
             :return: return of the command
             :rtype: String
         """
         if self.gateway == None:
             client = self.create_connection()
-            stdin, stdout, stderr = client.exec_command(command, timeout=10)
+            stdin, stdout, stderr = client.exec_command(command, timeout=timeout)
             ret = stdout.readlines()
             ret = ''.join(ret)
             ret = ret[:string.rfind(ret, '\n')]
         else:
             client, terminal = self.create_connection_by_terminal()
-            ret = self.write_on_terminal(terminal, "", self.prompt)
             ret = self.write_on_terminal(terminal, command, self.prompt)
             ret = self.clean_output(ret)
         return ret
@@ -119,8 +113,8 @@ class Machine(object):
             terminal = client.invoke_shell()
         else:
             client, terminal = self.create_connection_by_terminal()
-        ret = self.write_on_terminal(terminal, "", self.prompt, machine_target)
-        ret = self.write_on_terminal(terminal, command, self.prompt, machine_target)
+        self.write_on_terminal(terminal, command, "password: ")
+        ret = self.write_on_terminal(terminal, machine_target.password, self.prompt)
         return self.clean_output(ret)
 
     def clean_output(self, output):
